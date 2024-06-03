@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@500&display=swap');
+
+*, *::after, *::before {
+    text-decoration: none;
+    color: white;
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-backButon: #797777;
+    --color-navButton: #574545;
+    --color-planeInfo: #554747;
+    --color-white: #fff;
+    --color-input: #6f5656;
+    --color-border: #493c3c;
+    --color-black: #231f1f;
+    --color-brown: #2c2424;
+    --color-green: #1F9D70;
+    --color-orange: #C77B36;
+    --color-gray: #403636;
+    --color-light-gray: #7C6A6A;
+    --color-dark-brown: #583A3A;
+    --color-chocolate: #3C2B2B;
+    --color-light: #A49393;
+    --color-coffe: #816565;
+    --color-logo: #3b3b3b;
+}
+
+.nav {
+    background-color: var(--color-black);
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__wrapper {
+    margin: 2.5%;
+    width: 1900px;
+    max-width: 1900px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-logo);
+    border-radius: 5px;
+}
+
+.nav__logoText {
+    font-family: 'Open Sans';
+    font-size: 17px;
+}
+
+.nav__buttonLogIn {
+    transition: 0.3s;
+    font-family: 'Open Sans';
+    font-size: 17px;
+    cursor: pointer;
+    width: 126px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: var(--color-navButton);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    min-height: 92vh;
+    height: 100%;
+    background-color: var(--color-brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__wrapper {
+    height: 100%;
+    width: 100%;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.header__content {
+    width: 100%;
+    max-width: 1400px;
+    min-height: 88vh;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px
+}
+
+.header__planeImage {
+    margin-bottom: 3%;
+    width: 900px;
+}
+
+.header__logIn {
+    padding-top: 4px;
+    border: 3px solid var(--color-border);
+    width: 400px;
+    height: 235px;
+    border-radius: 15px;
+    background-color: var(--color-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header__input {
+    transition: 0.3s;
+    height: 40px;
+    width: 280px;
+    background: var(--color-input);
+    border-radius:8px;
+    display: flex;
+    padding-left: 9px;
+}
+
+.header__button {
+    font-size: 16px;
+    font-family: 'open sans';
+    color: var(--color-white);
+    cursor: pointer;
+    background-color: var(--color-input);
+    border-radius: 8px;
+    height: 35px;
+    width: 280px;
+}
+
+.header__buttons {
+    height: 167px;
+    margin: 3%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__text {
+    font-size: 20px;
+    font-family: 'open sans';
+    color: var(--color-white);
+}
+
+.header__input::placeholder {
+    opacity: 0.7;
+    font-family: 'open sans';
+    color: var(--color-white);
+}
+
+.header__input:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.nav__buttonSignUp:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.fas::before {
+    font-size: 15px;
+    color: var(--color-backButon);
+}
+
+.header__button:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}

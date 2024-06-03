@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYE.FLY</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/userCSS/updateUserLogin.css}">
+  <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav__wrapper">
+    <div class="nav__logo">
+      <div class="nav__logoText">AYE.FLY</div>
+    </div>
+    <form th:action="@{/}" method="post">
+      <button class="nav__buttonLogout">Log out</button>
+    </form>
+  </div>
+</nav>
+<header class="header">
+  <div class="header__wrapper">
+    <form th:action="@{/userFunctional}" class="header__backButtonPlace" method="post">
+      <button class="header__backButton"><i class="fas fa-arrow-left"></i>Back</button>
+    </form>
+    <div class="header__content">
+      <div class="header__userController">
+        <div class="header__user">
+          <div th:if="${currentUser == null}">
+            <div class="header__emptyMessage">No user info!</div>
+          </div>
+          <!-- Используйте th:if для отображения или скрытия элемента currentUser -->
+          <div th:if="${currentUser != null and currentUser.isPresent()}" class="header__userInfo">
+            <!-- Используйте поля userName и userLogin для вывода данных -->
+            <div class="header__userNameInfo">Name:<div th:text="${currentUser.get().getUserName()}" class="header__userName"></div></div>
+            <div class="header__userLoginInfo">Login:<div th:text="${currentUser.get().getUserLogin()}" class="header__userLogin"></div></div>
+          </div>
+          <!-- Используйте th:if для отображения или скрытия элемента currentUserFlight -->
+          <div th:if="${currentUserFlight != null and currentUserFlight.isPresent()}" class="header__userFlightInfo">
+            <!-- Используйте поля flightId и flightName для вывода данных -->
+            <div class="header__userFlightIdInfo">Flight:<div th:text="${currentUserFlight.get().getFlightId()}" class="header__userFlightId"></div>.</div>
+            <div class="header__userFlightNameInfo" th:text="${currentUserFlight.get().getFlightName()}"></div>
+          </div>
+        </div>
+        <form th:action="@{/user/doUpdateUserLogin}" method="post" class="header__userLoginUpdate">
+          <div class="header__text">Enter new login</div>
+          <div class="header__buttons">
+            <input class="header__inputNewUserLogin" type="text" name="userLogin" placeholder="Enter new user name: " required oninvalid="setCustomValidity('Enter new name')" oninput="setCustomValidity('')"/>
+            <button class="header__button" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+      <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+    </div>
+  </div>
+</header>
+<script src="https://kit.fontawesome.com/316c722ff4.js" crossorigin="anonymous"></script>
+</body>
+</html>

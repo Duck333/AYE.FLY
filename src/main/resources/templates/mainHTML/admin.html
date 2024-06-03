@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYE.FLY</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/mainCSS/admin.css}">
+    <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__wrapper">
+        <div class="nav__logo">
+            <div class="nav__logoText">AYE.FLY</div>
+        </div>
+        <form th:action="@{/}" method="post">
+            <button class="nav__buttonLogout">Log out</button>
+        </form>
+    </div>
+</nav>
+<header class="header">
+    <div class="header__wrapper">
+        <div class="header__content">
+            <div class="header__adminController">
+                <div class="header__text">Select to manage</div>
+                <div class="header__buttons">
+                    <form th:action="@{/user}" method="post">
+                        <button class="header__button" type="submit">Users</button>
+                    </form>
+                    <form th:action="@{/flight}" method="post">
+                        <button class="header__button" type="submit">Flights</button>
+                    </form>
+                    <form th:action="@{/plane}" method="post">
+                        <button class="header__button" type="submit">Planes</button>
+                    </form>
+                </div>
+            </div>
+            <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+        </div>
+    </div>
+</header>
+<script th:src="@{https://kit.fontawesome.com/316c722ff4.js}" crossorigin="anonymous"></script>
+</body>
+</html>

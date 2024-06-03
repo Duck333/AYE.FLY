@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYE.FLY</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/flightCSS/flightCRUD.css}">
+    <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__wrapper">
+        <div class="nav__logo">
+            <div class="nav__logoText">AYE.FLY</div>
+        </div>
+        <form th:action="@{/}" method="post">
+            <button class="nav__buttonLogout">Log out</button>
+        </form>
+    </div>
+</nav>
+<header class="header">
+    <div class="header__wrapper">
+        <form th:action="@{/admin}" class="header__backButtonPlace" method="post">
+            <button class="header__backButton"><i class="fas fa-arrow-left"></i>Back</button>
+        </form>
+        <div class="header__content">
+            <div class="header__flightController">
+                <div class="header__flightsList">
+                    <div th:if="${#lists.isEmpty(flights)}">
+                        <div class="header__emptyMessage">No flights added!</div>
+                    </div>
+                    <!-- Используйте th:each для итерации по коллекции flights -->
+                    <div th:each="flight : ${flights}" class="header__Info">
+                        <div class="header__flightInfo">
+                            <!-- Используйте поля flightId и flightName для вывода данных -->
+                            <div class="header__flightId"><div th:text="${flight.flightId}"></div>.</div>
+                            <div th:text="${flight.flightName}" class="header__flightName"></div>
+                        </div>
+                        <div class="header__flightPlaneInfo">
+                            Plane: &nbsp;
+                            <!-- Используйте поле flightId для вывода данных -->
+                            <div class="header__flightPlaneId"><div th:text="${flight.planeId}"></div>.</div>
+                            <!-- Используйте th:each для итерации по коллекции planes -->
+                            <div th:each="plane : ${planes}" th:if="${plane.planeId == flight.planeId}">
+                                <!-- Используйте поле flightName для вывода данных -->
+                                <div class="header__flightPlaneName" th:text="${plane.planeName}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__flightCRUD" >
+                    <div class="header__text">Select action with plane</div>
+                    <div class="header__buttons">
+                        <form th:action="@{/flight/createFlight}" method="post">
+                            <button class="header__button" type="submit">Create flight</button>
+                        </form>
+                        <form th:action="@{/flight/updateFlightNameById}" method="post">
+                            <button class="header__button" type="submit">Update flight name</button>
+                        </form>
+                        <form th:action="@{/flight/updatePlaneIdById}" method="post">
+                            <button class="header__button" type="submit">Update plane in flight</button>
+                        </form>
+                        <form th:action="@{/flight/deleteFlightById}" method="post">
+                            <button class="header__button" type="submit">Delete flight</button>
+                        </form>
+                        <form th:action="@{/flight/doDeleteAllFlights}" method="post">
+                            <button class="header__button" type="submit">Delete all flights</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+        </div>
+    </div>
+</header>
+<script src="https://kit.fontawesome.com/316c722ff4.js" crossorigin="anonymous"></script>
+</body>
+</html>
