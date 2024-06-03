@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYE.FLY</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/planeCSS/updatePlaneNameById.css}">
+    <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__wrapper">
+        <div class="nav__logo">
+            <div class="nav__logoText">AYE.FLY</div>
+        </div>
+        <form th:action="@{/}" method="post">
+            <button class="nav__buttonLogout">Log out</button>
+        </form>
+    </div>
+</nav>
+<header class="header">
+    <div class="header__wrapper">
+        <form th:action="@{/plane}" class="header__backButtonPlace" method="post">
+            <button class="header__backButton"><i class="fas fa-arrow-left"></i>Back</button>
+        </form>
+        <div class="header__content">
+            <div class="header__planeController">
+                <div class="header__planesList">
+                    <div th:if="${#lists.isEmpty(planes)}">
+                        <div class="header__emptyMessage">No planes info</div>
+                    </div>
+                    <!-- Используйте th:each для итерации по коллекции planes -->
+                    <div th:each="plane : ${planes}" class="header__planeInfo">
+                        <!-- Используйте поля planeId и planeName для вывода данных -->
+                        <div class="header__planeId"><div th:text="${plane.planeId}"></div>.</div>
+                        <div th:text="${plane.planeName}" class="header__planeName"></div>
+                    </div>
+                </div>
+                <div class="header__planeNameUpdate" >
+                    <form th:action="@{/plane/doUpdatePlaneNameById}" method="post">
+                        <div class="header__text">Enter plane ID to update plane name</div>
+                        <div class="header__buttons">
+                            <input class="header__inputPlaneId" type="text" name="planeId" placeholder="Enter plane ID: " required oninvalid="setCustomValidity('Enter plane ID')" oninput="setCustomValidity('')"/>
+                            <input class="header__inputPlaneName" type="text" name="planeName" placeholder="Enter plane ID: " required oninvalid="setCustomValidity('Enter new plane name')" oninput="setCustomValidity('')"/>
+                            <button class="header__button" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+        </div>
+    </div>
+</header>
+<script src="https://kit.fontawesome.com/316c722ff4.js" crossorigin="anonymous"></script>
+</body>
+</html>

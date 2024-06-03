@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYE.FLY</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/flightCSS/updateFlightNameById.css}">
+    <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__wrapper">
+        <div class="nav__logo">
+            <div class="nav__logoText">AYE.FLY</div>
+        </div>
+        <form th:action="@{/}" method="post">
+            <button class="nav__buttonLogout">Log out</button>
+        </form>
+    </div>
+</nav>
+<header class="header">
+    <div class="header__wrapper">
+        <form th:action="@{/flight}" class="header__backButtonPlace" method="post">
+            <button class="header__backButton"><i class="fas fa-arrow-left"></i>Back</button>
+        </form>
+        <div class="header__content">
+            <div class="header__flightController">
+                <div class="header__flightsList">
+                    <div th:if="${#lists.isEmpty(flights)}">
+                        <div class="header__emptyMessage">No flights added!</div>
+                    </div>
+                    <!-- Используйте th:each для итерации по коллекции flights -->
+                    <div th:each="flight : ${flights}" class="header__Info">
+                        <div class="header__flightInfo">
+                            <!-- Используйте поля flightId и flightName для вывода данных -->
+                            <div class="header__flightId"><div th:text="${flight.flightId}"></div>.</div>
+                            <div th:text="${flight.flightName}" class="header__flightName"></div>
+                        </div>
+                        <div class="header__flightPlaneInfo">
+                            Plane: &nbsp;
+                            <!-- Используйте поле flightId для вывода данных -->
+                            <div class="header__flightPlaneId"><div th:text="${flight.planeId}"></div>.</div>
+                            <!-- Используйте th:each для итерации по коллекции planes -->
+                            <div th:each="plane : ${planes}" th:if="${plane.planeId == flight.planeId}">
+                                <!-- Используйте поле flightName для вывода данных -->
+                                <div class="header__flightPlaneName" th:text="${plane.planeName}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__flightNameUpdate" >
+                    <form th:action="@{/flight/doUpdateFlightNameById}" method="post">
+                        <div class="header__text">Enter flight ID and new flight name</div>
+                        <div class="header__buttons">
+                            <input class="header__inputFlightId" type="text" name="flightId" placeholder="Enter flight ID: " required oninvalid="setCustomValidity('Enter flight ID')" oninput="setCustomValidity('')"/>
+                            <input class="header__inputFlightName" type="text" name="flightName" placeholder="Enter new flight name: " required oninvalid="setCustomValidity('Enter new flight name')" oninput="setCustomValidity('')"/>
+                            <button class="header__button" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+        </div>
+    </div>
+</header>
+<script src="https://kit.fontawesome.com/316c722ff4.js" crossorigin="anonymous"></script>
+</body>
+</html>

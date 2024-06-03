@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYE.FLY</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/mainCSS/logIn.css}">
+    <link rel="icon" th:href="@{/icons/10132070_airplane_flight_2_line_icon.png}">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__wrapper">
+        <div class="nav__logo">
+            <div class="nav__logoText">AYE.FLY</div>
+        </div>
+        <form th:action="@{/singUp}" method="post">
+            <button class="nav__buttonSignUp">Sign Up</button>
+        </form>
+    </div>
+</nav>
+<header class="header">
+    <div class="header__wrapper">
+        <div class="header__content">
+            <form th:action="@{/login}" method="post" class="header__logIn">
+                <div class="header__text">Enter login and password</div>
+                <div class="header__buttons">
+                    <input class="header__input" type="text" name="login" placeholder="Enter login: " required oninvalid="setCustomValidity('Enter login')" oninput="setCustomValidity('')"/>
+                    <input class="header__input" type="text" name="password" placeholder="Enter password: " required oninvalid="setCustomValidity('Enter password')" oninput="setCustomValidity('')"/>
+                    <button class="header__button" type="submit">Submit</button>
+                </div>
+            </form>
+            <img th:src="@{/images/plane.svg}" alt="" class="header__planeImage">
+        </div>
+    </div>
+</header>
+<script src="https://kit.fontawesome.com/316c722ff4.js" crossorigin="anonymous"></script>
+</body>
+</html>
